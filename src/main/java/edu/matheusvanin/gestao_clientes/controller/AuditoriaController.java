@@ -1,7 +1,7 @@
 package edu.matheusvanin.gestao_clientes.controller;
 
 import edu.matheusvanin.gestao_clientes.dto.LogDTO;
-import edu.matheusvanin.gestao_clientes.facede.AuditoriaFacede;
+import edu.matheusvanin.gestao_clientes.facade.AuditoriaFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,11 +19,11 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class AuditoriaController {
 
-    private final AuditoriaFacede auditoriaFacede;
+    private final AuditoriaFacade auditoriaFacade;
 
     @GetMapping()
     public ResponseEntity<Page<LogDTO>> getLogs(Pageable pageable) {
-        return ResponseEntity.ok(auditoriaFacede.consultaLog(pageable));
+        return ResponseEntity.ok(auditoriaFacade.consultaLog(pageable));
     }
 
     @GetMapping("/filtros")
@@ -33,6 +33,6 @@ public class AuditoriaController {
                                                 @RequestParam(name = "status", required = false) Integer status,
                                                 @RequestParam(name = "dataInicial", required = false) LocalDateTime dataInicial,
                                                 @RequestParam(name = "dataFinal", required = false) LocalDateTime dataFinal) {
-        return ResponseEntity.ok(auditoriaFacede.consultaLogComFiltro(pageable, metodo, endpoint, status, dataInicial, dataFinal));
+        return ResponseEntity.ok(auditoriaFacade.consultaLogComFiltro(pageable, metodo, endpoint, status, dataInicial, dataFinal));
     }
 }

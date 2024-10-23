@@ -1,4 +1,4 @@
-package edu.matheusvanin.gestao_clientes.facede;
+package edu.matheusvanin.gestao_clientes.facade;
 
 import edu.matheusvanin.gestao_clientes.domain.Cliente;
 import edu.matheusvanin.gestao_clientes.domain.Endereco;
@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
-public class GestaoClienteFacede {
+public class GestaoClienteFacade {
 
     private final DadosPessoaisService dadosPessoaisService;
     private final EnderecoService enderecoService;

@@ -1,4 +1,4 @@
-package edu.matheusvanin.gestao_clientes.facede;
+package edu.matheusvanin.gestao_clientes.facade;
 
 import edu.matheusvanin.gestao_clientes.auditoria.Log;
 import edu.matheusvanin.gestao_clientes.dto.LogDTO;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class AuditoriaFacede {
+public class AuditoriaFacade {
     private final LogService logService;
     private final GestaoClienteMapper mapper;
 
