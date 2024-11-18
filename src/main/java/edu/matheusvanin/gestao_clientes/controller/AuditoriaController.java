@@ -28,11 +28,12 @@ public class AuditoriaController {
 
     @GetMapping("/filtros")
     public ResponseEntity<Page<LogDTO>> getLogs(@PageableDefault Pageable pageable,
-                                                @RequestParam(name = "metodo", required = false) String metodo,
-                                                @RequestParam(name = "endpoint", required = false) String endpoint,
-                                                @RequestParam(name = "status", required = false) Integer status,
-                                                @RequestParam(name = "dataInicial", required = false) LocalDateTime dataInicial,
-                                                @RequestParam(name = "dataFinal", required = false) LocalDateTime dataFinal) {
-        return ResponseEntity.ok(auditoriaFacade.consultaLogComFiltro(pageable, metodo, endpoint, status, dataInicial, dataFinal));
+                                                @RequestParam(required = false) String metodo,
+                                                @RequestParam(required = false) String endpoint,
+                                                @RequestParam(required = false) Integer status,
+                                                @RequestParam(required = false) LocalDateTime dataInicial,
+                                                @RequestParam(required = false) LocalDateTime dataFinal) {
+        return ResponseEntity.ok(auditoriaFacade
+                .consultaLogComFiltro(pageable, metodo, endpoint, status, dataInicial, dataFinal));
     }
 }

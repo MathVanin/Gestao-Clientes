@@ -17,9 +17,15 @@ public class Constantes {
     // ENDERECO
     public static final String CEP_INVALIDO = "CEP inválido";
     public static final String ENDERECO_INVALIDO = "Endereço inválido";
+    public static final String ENDERECO_CADASTRADO = "Endereço cadastrado com sucesso";
+    public static final String ENDERECO_ATUALIZADO = "Endereço atualizado com sucesso";
+    public static final String ENDERECO_EXCLUIDO = "Endereço excluído com sucesso";
 
     // TELEFONE
     public static final String TELEFONE_INVALIDO = "Telefone inválido";
+    public static final String TELEFONE_CADASTRADO = "Telefone cadastrado com sucesso";
+    public static final String TELEFONE_ATUALIZADO = "Telefone atualizado com sucesso";
+    public static final String TELEFONE_EXCLUIDO = "Telefone excluído com sucesso";
 
     // LOG
     public static final String LOG_NAO_ENCONTRADO = "Log não encontrado";

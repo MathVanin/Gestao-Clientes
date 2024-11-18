@@ -1,12 +1,17 @@
 package edu.matheusvanin.gestao_clientes.controller;
 
 import edu.matheusvanin.gestao_clientes.dto.EnderecoDTO;
+import edu.matheusvanin.gestao_clientes.dto.GenericResponseDto;
 import edu.matheusvanin.gestao_clientes.facade.GestaoClienteFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
+
+import static edu.matheusvanin.gestao_clientes.utils.Constantes.ENDERECO_CADASTRADO;
+import static edu.matheusvanin.gestao_clientes.utils.Constantes.ENDERECO_EXCLUIDO;
 
 @RestController
 @RequestMapping("/endereco")
@@ -16,8 +21,11 @@ public class EnderecoController {
     private final GestaoClienteFacade gestaoClienteFacade;
 
     @PostMapping("/{uuid}")
-    void insereEndereco(@PathVariable(name = "uuid") UUID uuidCliente, @RequestBody EnderecoDTO enderecoDTO) {
+    ResponseEntity<GenericResponseDto> insereEndereco(@PathVariable(name = "uuid") UUID uuidCliente,
+                                                      @RequestBody EnderecoDTO enderecoDTO) {
         gestaoClienteFacade.insereEndereco(uuidCliente, enderecoDTO);
+        return ResponseEntity.ok(GenericResponseDto.builder().message(ENDERECO_CADASTRADO)
+                .timestamp(LocalDateTime.now()).build());
     }
 
     @GetMapping("/{uuid}")
@@ -26,8 +34,10 @@ public class EnderecoController {
     }
 
     @DeleteMapping("/{uuid}")
-    void deletaEndereco(@PathVariable(name = "uuid") UUID uuidEndereco) {
+    ResponseEntity<GenericResponseDto> deletaEndereco(@PathVariable(name = "uuid") UUID uuidEndereco) {
         gestaoClienteFacade.deletaEndereco(uuidEndereco);
+        return ResponseEntity.ok(GenericResponseDto.builder().message(ENDERECO_EXCLUIDO)
+                .timestamp(LocalDateTime.now()).build());
     }
 
     @GetMapping("/busca-cep/{cep}")
